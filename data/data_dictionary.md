@@ -45,7 +45,7 @@ Both tables share the same schema. The only difference is the retention outcome 
 |-------|------|-------------|
 | `Building Code` | String | Internal NAU building identifier |
 | `Building Name` | String | Human-readable building name |
-| `Campus` | String | North or South — the campus assignment for that building |
+| `Campus` | String | North or South, the campus assignment for that building |
 
 **Purpose:** Allows the fact tables (which store raw building codes) to be grouped by campus in all visuals and measures without embedding the mapping logic in every DAX measure.
 
