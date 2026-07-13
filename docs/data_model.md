@@ -1,4 +1,4 @@
-# Data Model - NAU Retention Dashboard
+# Data Model of NAU Retention Dashboard
 
 ## Overview
 
