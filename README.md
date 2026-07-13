@@ -1,4 +1,4 @@
-# NAU Campus Recreation — Student Retention Dashboard
+# NAU Campus Recreation - Student Retention Dashboard
 
 > **Power BI product analyzing campus recreation engagement's impact on student retention across 20,941 NAU students. In production use at Northern Arizona University.**
 
@@ -15,7 +15,7 @@
 
 | Cohort | Retention Rate | Delta |
 |--------|---------------|-------|
-| Students with **0** rec visits | 59.0% | — |
+| Students with **0** rec visits | 59.0% | - |
 | Students with **≥1** rec visit | 71.8% | **+12.1pp ↑** |
 | Students with **≥5** rec visits | 71.8% | +12.8pp ↑ |
 | Students with **≥30** rec visits | 70.4% | +11.4pp ↑ |
@@ -28,9 +28,9 @@
 
 NAU Campus Recreation leadership needed to answer a board-level question:
 
-> *"Does using the rec facility improve student retention — and if so, which students, by how much, and does it matter how often they visit?"*
+> *"Does using the rec facility improve student retention and if so, which students, by how much, and does it matter how often they visit?"*
 
-Extending the analysis to answer this in a self-service format — sliceable by visit threshold, campus, and demographics — required building a data product, not just pulling a number.
+Extending the analysis to answer this in a self-service format sliceable by visit threshold, campus, and demographics required building a data product, not just pulling a number.
 
 **Constraints:**
 - Non-technical staff needed to explore it without a data analyst in the room
@@ -54,15 +54,15 @@ Built end-to-end as a Business/Product Analyst at NAU Campus Rec:
 
 ## Dashboard Screenshots
 
-### General Retention — F24 to S25 (≥1 Rec Visit)
+### General Retention - F24 to S25 (≥1 Rec Visit)
 ![Retention Overview](screenshots/retention_overview.png)
 *91.82% retention rate for students with at least one rec visit, vs. 87.75% for non-users (Fall 24 → Spring 25 cohort)*
 
-### Demographic Breakdown — Bucket 5 (≥5 Rec Visits)
+### Demographic Breakdown - Bucket 5 (≥5 Rec Visits)
 ![Demographic Breakdown](screenshots/demographic_breakdown.png)
 *Cross-filtering by ethnicity, gender, first-gen status, and academic level. Engagement effect holds across all demographic segments.*
 
-### North vs South Campus — Rec Engagement Comparison
+### North vs South Campus - Rec Engagement Comparison
 ![North South Campus](screenshots/north_south_campus.png)
 *North Campus students engage at 64% vs South Campus at 55% across all visit thresholds — key input for a proposed South Campus facility expansion.*
 
@@ -73,15 +73,15 @@ Built end-to-end as a Business/Product Analyst at NAU Campus Rec:
 The director requested engagement buckets (≥1, ≥5, ≥10, ≥15, ≥30 visits). When I pulled the numbers, the pattern was clear:
 
 ```
-No visits:    59.0%  ████████████░░░░
-≥1 visit:     71.1%  █████████████████░░░  ← +12.1pp jump here
-≥5 visits:    71.8%  █████████████████░░░
-≥10 visits:   71.3%  █████████████████░░░
-≥15 visits:   71.1%  █████████████████░░░
-≥30 visits:   70.4%  █████████████████░░░
+No visits:    59.0%  ████████████
+≥1 visit:     71.1%  █████████████████  ← +12.1pp jump here
+≥5 visits:    71.8%  █████████████████
+≥10 visits:   71.3%  █████████████████
+≥15 visits:   71.1%  █████████████████
+≥30 visits:   70.4%  █████████████████
 ```
 
-**The lift is almost entirely at the 0→1 transition.** Above 5 visits, returns are flat — statistically noise.
+**The lift is almost entirely at the 0→1 transition.** Above 5 visits, returns are flat statistically noise.
 
 I raised this in stakeholder review. Leadership used it to **shift the outreach strategy from a visit-frequency campaign to a first-visit campaign** for non-engaged students. The original buckets stayed in the dashboard; the framing of how staff talk about the data changed.
 
@@ -96,7 +96,7 @@ I raised this in stakeholder review. Leadership used it to **shift the outreach 
 | **Non-residents** | 56.5% retention |
 | **Non-First-Gen students** | 68.8% retention |
 | **First-Gen students** | 64.4% retention — 4.4pp gap narrowed by rec engagement |
-| **⚠️ "Unknown" FGen status** | **31.8% retention** — 519 students, flagged as data-quality issue + outreach risk |
+| **⚠️ "Unknown" FGen status** | **31.8% retention** - 519 students, flagged as data-quality issue + outreach risk |
 
 The Unknown-FGen outlier was escalated separately: both a data-quality problem (missing intake field) and a retention risk (population being missed by all outreach campaigns).
 
@@ -105,9 +105,9 @@ The Unknown-FGen outlier was escalated separately: both a data-quality problem (
 ## What Leadership Did With It
 
 1. **Redirected outreach dollars** from frequent-user campaigns toward a first-visit acquisition campaign for non-engaged students
-2. **Prioritized FGen and Unknown-FGen cohorts** for targeted outreach — closes the retention gap and fixes the data-quality issue in parallel
+2. **Prioritized FGen and Unknown-FGen cohorts** for targeted outreach closes the retention gap and fixes the data-quality issue in parallel
 3. **Fed the North/South comparison** into a proposal for expanded rec facilities on South Campus
-4. **Adopted the dashboard for weekly retention monitoring** — now used by Campus Rec staff each semester
+4. **Adopted the dashboard for weekly retention monitoring** - now used by Campus Rec staff each semester
 
 ---
 
@@ -143,7 +143,7 @@ Full field descriptions → [`data/data_dictionary.md`](data/data_dictionary.md)
 See all 16 measures → [`dax/measures.md`](dax/measures.md)
 
 ```dax
-// Distinct student count — anchors all retention rate calculations
+// Distinct student count anchors all retention rate calculations
 Retention Total = DISTINCTCOUNT('F24-F25 Retention'[*Emplid])
 
 // Retained-or-graduated count for bucket analysis
@@ -188,22 +188,22 @@ All pages cross-filter. Slicers and bookmarks allow non-technical staff to pivot
 | **Used by** | Campus Rec leadership, referenced in monthly briefings |
 | **Artifacts** | Full .pbix + DAX measure library available on request |
 
-> The .pbix file is not included in this repo — it contains student-level enrollment data protected under FERPA. Contact me directly if you'd like a walkthrough or demo.
+> The .pbix file is not included in this repo, it contains student-level enrollment data protected under FERPA. Contact me directly if you'd like a walkthrough or demo.
 
 ---
 
 ## Tech Stack
 
-- **Power BI Desktop** — report authoring, DAX, data modeling
-- **Power Query (M)** — ETL, data type normalization, column transformations
-- **DAX** — 16 calculated measures across 2 fact tables
-- **Excel / CSV** — source data formats (institutional enrollment exports)
+- **Power BI Desktop** - report authoring, DAX, data modeling
+- **Power Query (M)** - ETL, data type normalization, column transformations
+- **DAX** - 16 calculated measures across 2 fact tables
+- **Excel / CSV** - source data formats (institutional enrollment exports)
 
 ---
 
 ## About
 
-Built by **Rohith Reddy Thumma** — Product Analyst, MS Business Analytics @ NAU (GPA 4.0, Distinction, May 2026).
+Built by **Rohith Reddy Thumma** - Product Analyst, MS Business Analytics @ NAU (GPA 4.0, Distinction, May 2026).
 
 - 🌐 Portfolio: [veritas-ui-eight.vercel.app](https://veritas-ui-eight.vercel.app)
 - 💼 LinkedIn: [linkedin.com/in/rohithreddythumma](https://linkedin.com/in/rohithreddythumma)
