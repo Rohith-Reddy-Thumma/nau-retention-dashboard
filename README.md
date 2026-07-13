@@ -95,7 +95,7 @@ I raised this in stakeholder review. Leadership used it to **shift the outreach 
 | **South Campus residents** | 72.7% retention |
 | **Non-residents** | 56.5% retention |
 | **Non-First-Gen students** | 68.8% retention |
-| **First-Gen students** | 64.4% retention — 4.4pp gap narrowed by rec engagement |
+| **First-Gen students** | 64.4% retention - 4.4pp gap narrowed by rec engagement |
 | **⚠️ "Unknown" FGen status** | **31.8% retention** - 519 students, flagged as data-quality issue + outreach risk |
 
 The Unknown-FGen outlier was escalated separately: both a data-quality problem (missing intake field) and a retention risk (population being missed by all outreach campaigns).
