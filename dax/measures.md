@@ -1,4 +1,4 @@
-# DAX Measures — NAU Retention Dashboard
+# DAX Measures of NAU Retention Dashboard
 
 All 16 calculated measures used in the dashboard. Measures are shared across both fact tables (F24-S25 Retention and F24-F25 Retention) via the Campus bridge table where applicable.
 
@@ -121,7 +121,7 @@ DIVIDE(
 
 ## Visit Bucket Measures
 
-### REC Usage % — ≥1 Visit
+### REC Usage %  ≥1 Visit
 ```dax
 REC Usage Pct 1 Visit =
 DIVIDE(
@@ -157,13 +157,13 @@ DIVIDE(
 ## Design Notes
 
 **Why DIVIDE instead of `/`:**
-All division uses `DIVIDE(numerator, denominator, 0)` rather than the `/` operator. This returns 0 (not an error) when the denominator is zero — critical for filtered views where a demographic slice might have no students in a given bucket.
+All division uses `DIVIDE(numerator, denominator, 0)` rather than the `/` operator. This returns 0 (not an error) when the denominator is zero, critical for filtered views where a demographic slice might have no students in a given bucket.
 
 **Why DISTINCTCOUNT not COUNT:**
 Source data contains one row per student per enrollment event. DISTINCTCOUNT on student ID ensures each student is counted once regardless of how many enrollment records they have.
 
 **Why no bidirectional relationships:**
-The model uses single-direction relationships from fact tables to the Campus dimension. Bidirectional cross-filters were tested and caused ambiguous filter contexts in the visit-bucket measures — removed to maintain calculation accuracy.
+The model uses single-direction relationships from fact tables to the Campus dimension. Bidirectional cross-filters were tested and caused ambiguous filter contexts in the visit-bucket measures removed to maintain calculation accuracy.
 
 **Context transitions:**
-All bucket measures use `CALCULATE` to impose an explicit filter context over the base DISTINCTCOUNT. This is intentional — without it, row-context iterations from visuals would give incorrect results when cross-filtering by demographic.
+All bucket measures use `CALCULATE` to impose an explicit filter context over the base DISTINCTCOUNT. This is intentional without it, row-context iterations from visuals would give incorrect results when cross-filtering by demographic.
