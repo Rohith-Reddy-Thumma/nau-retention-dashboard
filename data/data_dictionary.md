@@ -1,4 +1,4 @@
-# Data Dictionary — NAU Retention Dashboard
+# Data Dictionary of NAU Retention Dashboard
 
 > ⚠️ **Privacy Notice:** This dictionary describes the schema of the data used in this project. No actual student data is included in this repository. All student-level records are protected under FERPA and remain within NAU's internal systems.
 
@@ -22,7 +22,7 @@ Both tables share the same schema. The only difference is the retention outcome 
 
 | Field | Type | Values | Description |
 |-------|------|--------|-------------|
-| `*Emplid` | String | Anonymized ID | Student identifier. Anonymized before export — no PII. Primary key for DISTINCTCOUNT measures. |
+| `*Emplid` | String | Anonymized ID | Student identifier. Anonymized before export - no PII. Primary key for DISTINCTCOUNT measures. |
 | `Retained or Graduated` | Integer | 0, 1 | 1 = student re-enrolled or graduated in the target term. 0 = did not return. |
 | `Visit_1_Plus` | Integer | 0, 1 | Flag: student visited rec center ≥1 time in Fall 2024. |
 | `Visit_5_Plus` | Integer | 0, 1 | Flag: student visited rec center ≥5 times in Fall 2024. |
@@ -55,8 +55,8 @@ Both tables share the same schema. The only difference is the retention outcome 
 
 | Issue | Description | Impact | Status |
 |-------|-------------|--------|--------|
-| **Unknown First-Gen (519 students)** | 519 students have `First Gen Classification = U` (Unknown). These students retained at only 31.8% — roughly half the rate of every other segment. | Creates an outlier that skews FGen analysis; this population is invisible to outreach campaigns. | Flagged to leadership. Recommended: audit the enrollment intake form + manual outreach to resolve unknown status. |
-| **Unknown Campus** | A small number of students have no building assignment and cannot be mapped to North or South campus. | Minor — excluded from geographic analysis totals. | Acceptable data loss. |
+| **Unknown First-Gen (519 students)** | 519 students have `First Gen Classification = U` (Unknown). These students retained at only 31.8%, roughly half the rate of every other segment. | Creates an outlier that skews FGen analysis; this population is invisible to outreach campaigns. | Flagged to leadership. Recommended: audit the enrollment intake form + manual outreach to resolve unknown status. |
+| **Unknown Campus** | A small number of students have no building assignment and cannot be mapped to North or South campus. | Minor excluded from geographic analysis totals. | Acceptable data loss. |
 | **Visit Count Source** | Visit counts come from swipe records at rec facility entrances. A student may enter multiple times in one day; the system counts unique days, not entries. | Visit thresholds (≥1, ≥5, etc.) represent unique visit days, not total entrances. | Documented in dashboard tooltip on the overview page. |
 
 ---
