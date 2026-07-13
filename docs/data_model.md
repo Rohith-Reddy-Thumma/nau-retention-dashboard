@@ -1,4 +1,4 @@
-# Data Model — NAU Retention Dashboard
+# Data Model - NAU Retention Dashboard
 
 ## Overview
 
@@ -111,18 +111,18 @@ Source exports contain one row per student-enrollment-event, not one row per stu
 
 Transformations applied before loading into the model:
 
-1. **Promoted headers** — first row of each CSV promoted to column names
-2. **Data type enforcement** — `Retained or Graduated` and all visit flags cast to Integer; `*Emplid` cast to Text to prevent numeric rounding on long IDs
-3. **Visit flag computation** — `Visit_N_Plus` columns derived from raw visit count column using `if [VisitCount] >= N then 1 else 0`
-4. **Campus mapping join** — `Campus` column derived by merging on building code against the Campus dimension table
-5. **Null handling** — null `FirstGenClassification` values mapped to `"U"` (Unknown) for consistent filtering
-6. **Removed duplicates** — duplicate Emplid rows removed after confirming they were data-entry artifacts, not legitimate multi-enrollment records
+1. **Promoted headers** - first row of each CSV promoted to column names
+2. **Data type enforcement** - `Retained or Graduated` and all visit flags cast to Integer; `*Emplid` cast to Text to prevent numeric rounding on long IDs
+3. **Visit flag computation** - `Visit_N_Plus` columns derived from raw visit count column using `if [VisitCount] >= N then 1 else 0`
+4. **Campus mapping join** - `Campus` column derived by merging on building code against the Campus dimension table
+5. **Null handling** - null `FirstGenClassification` values mapped to `"U"` (Unknown) for consistent filtering
+6. **Removed duplicates** - duplicate Emplid rows removed after confirming they were data-entry artifacts, not legitimate multi-enrollment records
 
 ---
 
 ## Performance Notes
 
-- Both fact tables load fully into Vertipaq (in-memory columnar store) — no DirectQuery
+- Both fact tables load fully into Vertipaq (in-memory columnar store) - no DirectQuery
 - With ~20,941 rows each and ~15 columns, memory footprint is minimal (<5MB compressed)
 - All measures use DIVIDE with a 0 fallback to prevent blank visual errors on filtered subsets with zero denominators
 - No calculated columns were added to fact tables post-load — all aggregations are measures
